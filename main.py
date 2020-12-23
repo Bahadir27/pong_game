@@ -35,12 +35,20 @@ while game_is_on:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
 
-    print(ball.xcor())
-    print(ball.distance(paddle_left))
+    # print(ball.distance(paddle_left))
     # detect collision with paddles
     if ball.xcor() > 340 and ball.distance(paddle_right) < 50 or ball.xcor() < -340 and ball.distance(paddle_left) < 50:
         ball.bounce_x()
-        print("Hola")
+
+    # detect if ball os out of the game right side
+    if ball.xcor() > 380:
+        ball.reset_position()
+
+    # detect if ball os out of the game left side
+    if ball.xcor() < -380:
+        ball.reset_position()
+
+
 
 screen.exitonclick()
 
